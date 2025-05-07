@@ -2,6 +2,8 @@
 
 This project implements and evaluates various prompt-engineering techniques for a calculus tutoring system using LangChain and OpenAI.
 
+[View the full documentation here](https://docs.google.com/document/d/1s57iMU5oQwxL5Xd6C9ovPp9vugVAZYX4aYFvRurBS4s/edit?usp=sharing)
+
 ## Features
 
 * **Few-Shot Prompting**: Uses semantic similarity to select relevant examples.
