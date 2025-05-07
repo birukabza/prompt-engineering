@@ -1,0 +1,62 @@
+# ===== Basic Differentiation =====
+Find the derivative of f(x) = 3x^2 + 5
+Calculate the derivative of sin(x) + cos(x)
+Differentiate f(x) = e^(2x)
+Find dy/dx for y = ln(x^2)
+Derivative of tan(x) * sec(x)
+
+# ===== Intermediate Differentiation =====
+Find the second derivative of f(x) = x^4 - 3x^2
+Use implicit differentiation to find dy/dx for x^2 + y^2 = 9
+Differentiate f(x) = (x^2 + 1)/(x - 1)
+Find the derivative of arcsin(3x)
+Derivative of x^x using logarithmic differentiation
+
+# ===== Advanced Differentiation =====
+Find the 10th derivative of sin(x) + x^5
+Calculate the partial derivatives of f(x,y) = x^2y + y^3
+Derivative of f(x) = integral from 0 to x^2 of e^t dt
+Find dy/dx for x^y = y^x
+Derivative of inverse function of f(x) = x + e^x at x=1
+
+# ===== Basic Integration =====
+Find the integral of 4x^3 + 2x dx
+Calculate ∫cos(x) dx
+Evaluate ∫e^(-x) dx from 0 to ∞
+Find ∫1/(1 + x^2) dx
+Integral of sec^2(x)
+
+# ===== Intermediate Integration =====
+Evaluate ∫x*sin(x) dx using integration by parts
+Calculate ∫(3x + 2)/(x^2 + x) dx using partial fractions
+Find ∫sqrt(9 - x^2) dx using trigonometric substitution
+Integral of x^2*e^x dx
+Evaluate ∫tan^3(x)sec(x) dx
+
+# ===== Advanced Integration =====
+Calculate ∫e^(x^2) dx (express as erf)
+Evaluate ∫sin(x^2) dx from 0 to ∞ (Fresnel integral)
+Find ∫1/sqrt(x^2 + a^2) dx
+Integral of ln(x)/x^2 dx
+Evaluate ∫x^3/(x^2 + 1)^2 dx
+
+# ===== Limits =====
+Evaluate lim(x→0) sin(x)/x
+Find lim(x→∞) (1 + 1/x)^x
+Calculate lim(x→0) (e^x - 1)/x
+Evaluate lim(x→1) (x^2 - 1)/(x - 1)
+Find lim(x→0) x^x
+
+# ===== Applications =====
+Find the tangent line to y = x^3 at x=2
+Calculate the area between y=x^2 and y=x from 0 to 1
+Find the volume of revolution of y=sqrt(x) about x-axis from 0 to 4
+Determine the arc length of y=x^(3/2) from x=0 to x=4
+Solve the differential equation dy/dx = y with y(0)=1
+
+# ===== Challenge Problems =====
+Find the derivative of f(x) = integral from x to x^2 of sin(t^2) dt
+Evaluate ∫∫(x^2 + y^2) dxdy over the unit circle
+Calculate the surface area of z=sqrt(4-x^2-y^2) above xy-plane
+Find the Laurent series expansion of 1/(z^2 + 1) about z=i
+Solve the PDE: ∂u/∂t = k(∂^2u/∂x^2) with u(x,0)=δ(x)

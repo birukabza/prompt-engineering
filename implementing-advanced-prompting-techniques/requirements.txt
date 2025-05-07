@@ -1,0 +1,9 @@
+openai
+chromadb
+langchain
+requests
+python-dotenv
+tiktoken
+sympy
+wolframalpha
+langraph
