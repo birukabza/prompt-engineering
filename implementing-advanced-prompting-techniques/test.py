@@ -1,67 +1,42 @@
 import json
 from chains import build_all
 
-# Load the JSON data
-questions_data = '''
-[
-  {"question": "Find the derivative of f(x) = 3x² + 2x - 5", "answer": "6x + 2", "category": "basic_differentiation"},
-  {"question": "Calculate the integral of ∫(4x³ + 2x) dx", "answer": "x⁴ + x² + C", "category": "basic_integration"},
-  {"question": "Find lim(x→0) (sin(x)/x)", "answer": "1", "category": "basic_limits"},
-  {"question": "Differentiate y = x³e^x using product rule", "answer": "3x²e^x + x³e^x", "category": "intermediate_differentiation"},
-  {"question": "Evaluate ∫x sin(x) dx using integration by parts", "answer": "-x cos(x) + sin(x) + C", "category": "intermediate_integration"},
-  {"question": "Find dy/dx for x² + y² = 25 using implicit differentiation", "answer": "-x/y", "category": "intermediate_differentiation"},
-  {"question": "Calculate the 10th derivative of sin(x) + x⁵", "answer": "-sin(x)", "category": "advanced_differentiation"},
-  {"question": "Evaluate ∫∫(x + y) dx dy over [0,1]×[0,1]", "answer": "1", "category": "advanced_integration"},
-  {"question": "Find the Fourier series of f(x) = x on [-π, π]", "answer": "2∑((-1)^(n+1) sin(nx)/n", "category": "advanced_series"},
-  {"question": "Solve the differential equation y'' + 4y = 0", "answer": "C1 cos(2x) + C2 sin(2x)", "category": "advanced_differential_equations"},
-  {"question": "Calculate the surface area of z = √(4 - x² - y²) above xy-plane", "answer": "8π", "category": "advanced_applications"},
-  {"question": "Find the Laurent series of 1/(z² + 1) about z = i", "answer": "-i/(2(z-i)) + 1/4 - i(z-i)/8 + ...", "category": "advanced_complex_analysis"},
-  {"question": "Evaluate ∫e^(-x²) dx from 0 to ∞", "answer": "√π/2", "category": "advanced_integration"},
-  {"question": "Calculate ∇×(x²y, y²z, z²x)", "answer": "(-y², -z², -x²)", "category": "advanced_vector_calculus"},
-  {"question": "Find the eigenvalues of the Hessian matrix for f(x,y) = x³ + y³ - 3xy", "answer": "6x and 6y", "category": "advanced_multivariable"},
-  {"question": "Solve the PDE: ∂u/∂t = k∂²u/∂x² with u(x,0) = δ(x)", "answer": "(1/√(4πkt))e^(-x²/(4kt))", "category": "advanced_pde"},
-  {"question": "Calculate the residue of f(z) = e^(1/z) at z = 0", "answer": "1", "category": "advanced_complex_analysis"},
-  {"question": "Evaluate ∫C (z² + 1) dz where C is |z| = 2", "answer": "0", "category": "advanced_contour_integration"},
-  {"question": "Find the Christoffel symbols for spherical coordinates", "answer": "Γ^θ_φφ = -sinθ cosθ, Γ^φ_θφ = cotθ", "category": "advanced_tensor_calculus"},
-  {"question": "Calculate the Frenet-Serret frame for r(t) = (cos t, sin t, t)", "answer": "T = (-sin t, cos t, 1)/√2, N = (-cos t, -sin t, 0), B = (sin t, -cos t, 1)/√2", "category": "advanced_differential_geometry"}
-]
-'''
+with open("data.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
 
-# Parse the questions data
-questions = json.loads(questions_data)
 
-# Define a function to test each agent with the provided questions
 def test_agents(agents, questions):
     results = {"cot": [], "react": [], "fewshot": [], "cot_fewshot": []}
-    
+
     for question_data in questions:
         question = question_data["question"]
         correct_answer = question_data["answer"]
-        
+
         for agent_name, agent in agents.items():
             print(f"Testing {agent_name} with question: {question}")
             response = agent.run(question)
-            results[agent_name].append({
-                "question": question,
-                "expected_answer": correct_answer,
-                "agent_answer": response,
-                "correct": response.strip() == correct_answer.strip()
-            })
-    
+            results[agent_name].append(
+                {
+                    "question": question,
+                    "expected_answer": correct_answer,
+                    "agent_answer": response,
+                    "correct": response.strip() == correct_answer.strip(),
+                }
+            )
+
     return results
 
-# Build the agents
-agents = build_all()
 
-# Run the test
-test_results = test_agents(agents, questions)
+if __name__ == "__main__":
+    agents = build_all()
 
-# Print the results
-for agent_name, agent_results in test_results.items():
-    print(f"\nResults for {agent_name}:")
-    for result in agent_results:
-        print(f"Q: {result['question']}")
-        print(f"Expected: {result['expected_answer']}")
-        print(f"Agent Answer: {result['agent_answer']}")
-        print(f"Correct: {result['correct']}")
-        print("-" * 50)
+    test_results = test_agents(agents, questions)
+
+    for agent_name, agent_results in test_results.items():
+        print(f"\nResults for {agent_name}:")
+        for result in agent_results:
+            print(f"Q: {result['question']}")
+            print(f"Expected: {result['expected_answer']}")
+            print(f"Agent Answer: {result['agent_answer']}")
+            print(f"Correct: {result['correct']}")
+            print("-" * 50)

@@ -3,7 +3,6 @@ from langchain.chains import LLMChain
 from langchain.agents import initialize_agent, AgentType
 from langchain_community.utilities.wolfram_alpha import WolframAlphaAPIWrapper
 from langchain_core.tools import Tool
-from langgraph.prebuilt import create_react_agent
 
 from llms import get_cot_llm, get_react_llm, get_cot_fewshot_llm, get_fewshot_llm
 from langchain.prompts import FewShotPromptTemplate, PromptTemplate
@@ -56,9 +55,15 @@ def build_cot_fewshot_agent():
     cot_fewshot_llm = get_cot_fewshot_llm()
 
     combined_prompt = """You are an expert calculus tutor. Follow these steps:
-1. Recall similar problems you've seen before
-2. Apply Chain-of-Thought reasoning
-3. Provide a complete solution
+Recall similar problems you've seen before
+Provide a complete solution
+
+When answering, follow these steps:
+1) Restate the problem in your own words
+2) Identify relevant calculus concepts or theorems
+3) Outline a step-by-step approach
+4) Execute each step with clear reasoning and intermediate results
+5) Summarize the final answer and verify it
 
 Here are some examples:
 "input": "What's the integral of 3x^2?",

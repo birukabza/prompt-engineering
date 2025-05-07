@@ -64,8 +64,6 @@ def chat_loop(agent):
         print("="*50 + "\n")
 
 
-
-
 def main():
     print("\n===== Welcome to the Calculus Tutor =====\n")
 
